@@ -35,7 +35,7 @@ jobs:
       
       - name: 安装依赖
         run: |
-          gem install jekyll jekyll-feed jekyll-paginate
+          gem install jekyll jekyll-feed jekyll-paginate minima
       
       - name: 构建网站
         run: jekyll build

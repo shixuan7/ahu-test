@@ -1,7 +1,6 @@
 ---
 title: Upload Guide
 layout: default
-permalink: /docs/upload-guide
 ---
 
 # 📝 论文分享上传指南

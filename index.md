@@ -8,7 +8,7 @@ title: 首页
   <p style="color: #4A4A4A; font-size: 1.2em;">本页面记录了我们研讨班的小组会安排和论文讨论记录</p>
 </div>
 
-每周四上午8:30-11:30，地点：安徽大学计算机科学与技术学院会议室
+每周四上午8:30-11:30，地点：计算机科学与技术学院会议室
 
 <div class="meeting-rules" style="background: #F5F5F5; padding: 25px; border-radius: 10px; margin: 30px 0;">
   <h2 style="color: #1B5E20; border-bottom: 2px solid #81C784; padding-bottom: 10px; margin-bottom: 20px;">小组会制度：</h2>

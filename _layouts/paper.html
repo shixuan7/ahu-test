@@ -15,6 +15,49 @@ layout: default
     {{ content }}
   </div>
 
+  <style>
+    .resources {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .resources a {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
+    }
+
+    .resources a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+      background: linear-gradient(135deg, #66BB6A, #388E3C);
+    }
+
+    .resources a:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(46, 125, 50, 0.2);
+    }
+
+    .resources a:before {
+      content: '→';
+      margin-right: 8px;
+      font-size: 1.2em;
+    }
+
+    .resources a[href="/"]::before {
+      content: '←';
+    }
+  </style>
+
   <div class="resources">
     {% if page.original_link %}
     <a href="{{ page.original_link }}" target="_blank">查看原文</a>

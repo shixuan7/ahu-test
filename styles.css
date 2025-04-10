@@ -5,16 +5,16 @@
 }
 
 body {
-    font-family: "Microsoft YaHei", "Times New Roman", serif;
+    font-family: "Microsoft YaHei", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     line-height: 1.7;
     color: #333;
-    background-color: #f8f8f8;
+    background-color: #f9f9f9;
     letter-spacing: 0.01em;
 }
 
 /* 头部样式 */
 header {
-    background-color: #1a3a5f;
+    background-color: #0e4d92;
     color: white;
     padding: 1.5rem 2.5rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -67,8 +67,8 @@ nav ul li a:hover:after {
 /* 主要内容样式 */
 main {
     max-width: 1200px;
-    margin: 3rem auto;
-    padding: 0 2.5rem;
+    margin: 0 auto;
+    padding: 0 2.5rem 3rem;
 }
 
 section {
@@ -78,7 +78,7 @@ section {
 h1 {
     font-size: 2.2rem;
     margin-bottom: 1rem;
-    color: #1a3a5f;
+    color: #0e4d92;
     font-weight: 500;
     letter-spacing: 0.05em;
 }
@@ -87,16 +87,38 @@ h2 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
     margin-top: 2.5rem;
-    color: #1a3a5f;
-    border-bottom: 2px solid #3a6ea5;
-    padding-bottom: 0.8rem;
+    color: #0e4d92;
     font-weight: 500;
+}
+
+/* 头部横幅 */
+.header-banner {
+    background: linear-gradient(135deg, #0e4d92 0%, #1a6eb5 100%);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.header-banner h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.header-banner p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
 }
 
 /* 会议信息样式 */
 .meeting-info {
     text-align: center;
-    margin: 1.5rem 0 3rem;
+    margin: 0 0 3rem;
     color: #555;
     font-size: 1.1rem;
 }
@@ -122,7 +144,7 @@ h2 {
 
 .meeting-rules h2 {
     border-bottom: none;
-    color: #1a3a5f;
+    color: #0e4d92;
     margin-top: 0;
     margin-bottom: 1.5rem;
 }
@@ -145,6 +167,27 @@ h2 {
     margin-bottom: 0.5rem;
 }
 
+/* 章节标题 */
+.section-title {
+    position: relative;
+    font-size: 1.8rem;
+    color: #0e4d92;
+    margin-bottom: 2rem;
+    padding-bottom: 0.8rem;
+    text-align: center;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 3px;
+    background-color: #3a6ea5;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 /* 论文列表样式 */
 .paper-list {
     display: grid;
@@ -154,11 +197,12 @@ h2 {
 
 .paper-item {
     background: white;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 3px 15px rgba(0,0,0,0.08);
     overflow: hidden;
     transition: all 0.4s ease;
     border: 1px solid #eaeaea;
+    height: 100%;
 }
 
 .paper-item:hover {
@@ -167,38 +211,92 @@ h2 {
     border-color: #d0e3ff;
 }
 
-.paper-item a {
-    display: block;
+.paper-content {
     padding: 2rem;
-    text-decoration: none;
-    color: inherit;
     height: 100%;
+    display: flex;
+    flex-direction: column;
     border-left: 4px solid transparent;
     transition: border-left-color 0.3s;
 }
 
-.paper-item:hover a {
+.paper-item:hover .paper-content {
     border-left-color: #3a6ea5;
 }
 
 .paper-item h3 {
-    color: #1a3a5f;
+    color: #0e4d92;
     margin-bottom: 1rem;
     font-size: 1.3rem;
     line-height: 1.4;
     font-weight: 500;
 }
 
-.paper-item p {
+.paper-meta {
+    margin-bottom: 1rem;
+}
+
+.paper-meta p {
     color: #555;
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
 }
 
-.paper-item p:last-child {
-    margin-top: 1rem;
-    color: #3a6ea5;
+.journal {
+    font-style: italic;
+    color: #666;
+}
+
+.presenter {
     font-weight: 500;
+}
+
+.date {
+    color: #3a6ea5;
+}
+
+.paper-abstract {
+    margin-bottom: 1.5rem;
+    color: #666;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.paper-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.paper-actions a {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.view-details {
+    background-color: #0e4d92;
+    color: white;
+}
+
+.view-details:hover {
+    background-color: #0a3d75;
+    box-shadow: 0 3px 10px rgba(14, 77, 146, 0.3);
+}
+
+.download-slides {
+    background-color: #f0f7ff;
+    color: #0e4d92;
+    border: 1px solid #d0e3ff;
+}
+
+.download-slides:hover {
+    background-color: #d0e3ff;
+    box-shadow: 0 3px 10px rgba(14, 77, 146, 0.1);
 }
 
 /* 论文详情页样式 */

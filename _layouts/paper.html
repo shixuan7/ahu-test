@@ -88,12 +88,16 @@ layout: default
     {{ content }}
     
     {% assign filename_without_extension = page.path | split: '/' | last | split: '.' | first %}
-    {% assign main_image_path = '/assets/images/posts/' | append: filename_without_extension | append: '.jpg' %}
+    {% assign jpg_image_path = '/assets/images/posts/' | append: filename_without_extension | append: '.jpg' %}
+    {% assign png_image_path = '/assets/images/posts/' | append: filename_without_extension | append: '.png' %}
     
     <div class="main-image-container">
-      {% if site.static_files | where: "path", main_image_path | size > 0 %}
+      {% if site.static_files | where: "path", jpg_image_path | size > 0 %}
         <h2>主图</h2>
-        <img src="{{ main_image_path | relative_url }}" alt="主图" class="main-image">
+        <img src="{{ jpg_image_path | relative_url }}" alt="主图" class="main-image">
+      {% elsif site.static_files | where: "path", png_image_path | size > 0 %}
+        <h2>主图</h2>
+        <img src="{{ png_image_path | relative_url }}" alt="主图" class="main-image">
       {% endif %}
     </div>
   </div>

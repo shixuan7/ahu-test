@@ -2,7 +2,8 @@ name: 部署到 GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    paths:
+      - '_posts/**'
   workflow_dispatch:
 
 # 设置 GITHUB_TOKEN 的权限

@@ -170,10 +170,10 @@ layout: default
     <div class="main-image-container">
       {% if site.static_files | where: "path", jpg_image_path | size > 0 %}
         <h2>主图</h2>
-        <img src="{{ jpg_image_path | relative_url }}" alt="主图" class="main-image" onclick="openImageModal(this.src)">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3C/svg%3E" data-src="{{ jpg_image_path | relative_url }}" alt="主图" class="main-image" loading="lazy" onclick="openImageModal(this.src || this.getAttribute('data-src'))">
       {% elsif site.static_files | where: "path", png_image_path | size > 0 %}
         <h2>主图</h2>
-        <img src="{{ png_image_path | relative_url }}" alt="主图" class="main-image" onclick="openImageModal(this.src)">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3C/svg%3E" data-src="{{ png_image_path | relative_url }}" alt="主图" class="main-image" loading="lazy" onclick="openImageModal(this.src || this.getAttribute('data-src'))">
       {% endif %}
       
       <div id="imageModal" class="image-modal" onclick="closeImageModal()">
@@ -210,6 +210,20 @@ layout: default
     document.addEventListener('keydown', function(event) {
       if (event.key === "Escape") {
         closeImageModal();
+      }
+    });
+    
+    // 预加载图片
+    document.addEventListener('DOMContentLoaded', function() {
+      var mainImage = document.querySelector('.main-image');
+      if (mainImage) {
+        // 当页面内容加载完成后再加载图片
+        setTimeout(function() {
+          var imgSrc = mainImage.getAttribute('data-src');
+          if (imgSrc) {
+            mainImage.setAttribute('src', imgSrc);
+          }
+        }, 100);
       }
     });
   </script>

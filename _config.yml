@@ -2,7 +2,6 @@ title: AHU VR&Vision Seminars
 description: AHU VR&Vision Seminars论文分享平台
 baseurl: "/ahu-test"
 url: "https://shixuan7.github.io"
-theme: minima
 
 # Jekyll 配置
 markdown: kramdown

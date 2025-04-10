@@ -2,6 +2,7 @@
 layout: default
 ---
 <style>
+  /* 论文详情页样式 */
   .paper-detail {
     max-width: 1200px;
     margin: 0 auto;
@@ -21,6 +22,7 @@ layout: default
     color: #212529;
     margin-bottom: 20px;
     font-size: 2em;
+    border-bottom: none;
   }
 
   .paper-metadata {
@@ -61,6 +63,7 @@ layout: default
     margin-bottom: 15px;
   }
   
+  /* 主图样式 */
   .main-image-container {
     margin-top: 30px;
   }
@@ -75,6 +78,7 @@ layout: default
     transition: transform 0.3s ease;
   }
   
+  /* 图片模态框样式 */
   .image-modal {
     display: none;
     position: fixed;
@@ -100,6 +104,49 @@ layout: default
   @keyframes zoom {
     from {transform: scale(0.1)}
     to {transform: scale(1)}
+  }
+  
+  /* 资源链接样式 */
+  .resources {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 40px 0;
+  }
+
+  .resources a {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    background: #f8f9fa;
+    color: #495057;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #dee2e6;
+  }
+
+  .resources a:hover {
+    transform: translateY(-2px);
+    background: #fff;
+    color: #212529;
+    border-color: #adb5bd;
+  }
+
+  .resources a:active {
+    transform: translateY(0);
+  }
+
+  .resources a:before {
+    content: '→';
+    margin-right: 8px;
+    font-size: 1.2em;
+    color: #495057;
+  }
+
+  .resources a[href="/"]::before {
+    content: '←';
   }
 </style>
 
@@ -135,49 +182,7 @@ layout: default
     </div>
   </div>
 
-  <style>
-    .resources {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      margin: 40px 0;
-    }
 
-    .resources a {
-      display: inline-flex;
-      align-items: center;
-      padding: 12px 24px;
-      background: #f8f9fa;
-      color: #495057;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      border: 1px solid #dee2e6;
-    }
-
-    .resources a:hover {
-      transform: translateY(-2px);
-      background: #fff;
-      color: #212529;
-      border-color: #adb5bd;
-    }
-
-    .resources a:active {
-      transform: translateY(0);
-    }
-
-    .resources a:before {
-      content: '→';
-      margin-right: 8px;
-      font-size: 1.2em;
-      color: #495057;
-    }
-
-    .resources a[href="/"]::before {
-      content: '←';
-    }
-  </style>
 
   <div class="resources">
     {% if page.original_link %}

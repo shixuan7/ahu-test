@@ -71,6 +71,35 @@ layout: default
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 15px;
     display: block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+    animation: zoom 0.3s;
+  }
+  
+  @keyframes zoom {
+    from {transform: scale(0.1)}
+    to {transform: scale(1)}
   }
 </style>
 
@@ -94,11 +123,15 @@ layout: default
     <div class="main-image-container">
       {% if site.static_files | where: "path", jpg_image_path | size > 0 %}
         <h2>主图</h2>
-        <img src="{{ jpg_image_path | relative_url }}" alt="主图" class="main-image">
+        <img src="{{ jpg_image_path | relative_url }}" alt="主图" class="main-image" onclick="openImageModal(this.src)">
       {% elsif site.static_files | where: "path", png_image_path | size > 0 %}
         <h2>主图</h2>
-        <img src="{{ png_image_path | relative_url }}" alt="主图" class="main-image">
+        <img src="{{ png_image_path | relative_url }}" alt="主图" class="main-image" onclick="openImageModal(this.src)">
       {% endif %}
+      
+      <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <img class="modal-content" id="modalImage">
+      </div>
     </div>
   </div>
 
@@ -152,4 +185,27 @@ layout: default
     {% endif %}
     <a href="{{ '/' | relative_url }}">返回论文列表</a>
   </div>
+  
+  <script>
+    function openImageModal(src) {
+      var modal = document.getElementById("imageModal");
+      var modalImg = document.getElementById("modalImage");
+      modal.style.display = "flex";
+      modalImg.src = src;
+      document.body.style.overflow = "hidden";
+    }
+    
+    function closeImageModal() {
+      var modal = document.getElementById("imageModal");
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+    
+    // 按ESC键关闭图片
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape") {
+        closeImageModal();
+      }
+    });
+  </script>
 </div>

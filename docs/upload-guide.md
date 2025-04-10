@@ -1,3 +1,8 @@
+---
+title: Upload Guide
+layout: default
+---
+
 # 📝 论文分享上传指南
 
 本指南将帮助你了解如何上传你的论文分享到小组网站。

@@ -1,0 +1,32 @@
+title: 安徽大学VR视觉研究组
+description: 安徽大学VR视觉研究组论文分享平台
+baseurl: "/ahu-test"
+url: "https://shixuan7.github.io"
+theme: minima
+
+# Jekyll 配置
+markdown: kramdown
+permalink: pretty
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# 集合设置
+collections:
+  papers:
+    output: true
+    permalink: /papers/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "papers"
+    values:
+      layout: "paper"
+  - scope:
+      path: ""
+    values:
+      layout: "default"

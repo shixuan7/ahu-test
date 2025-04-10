@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<div class="paper-detail">
+  <div class="paper-header">
+    <h2>{{ page.title }}</h2>
+    <div class="paper-metadata">
+      <p><strong>期刊：</strong> {{ page.journal }}</p>
+      <p><strong>报告人：</strong> {{ page.presenter }}</p>
+      <p><strong>日期：</strong> {{ page.date | date: "%Y-%m-%d" }}</p>
+    </div>
+  </div>
+
+  <div class="abstract-section">
+    <h3>摘要</h3>
+    <p>{{ page.abstract }}</p>
+  </div>
+
+  <div class="research-section">
+    <h3>研究内容</h3>
+    {{ content }}
+  </div>
+
+  <div class="resources">
+    {% if page.original_link %}
+    <a href="{{ page.original_link }}" target="_blank">查看原文</a>
+    {% endif %}
+    <a href="{{ '/' | relative_url }}">返回论文列表</a>
+  </div>
+</div>

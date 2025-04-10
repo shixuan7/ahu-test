@@ -2,8 +2,14 @@ name: 部署到 GitHub Pages
 
 on:
   push:
+    branches: ["main", "master"]
     paths:
       - '_posts/**'
+      - '_layouts/**'
+      - '_config.yml'
+      - 'assets/**'
+      - '*.html'
+      - '*.md'
   workflow_dispatch:
 
 # 设置 GITHUB_TOKEN 的权限
@@ -35,10 +41,10 @@ jobs:
       
       - name: 安装依赖
         run: |
-          gem install jekyll jekyll-feed jekyll-paginate minima
+          bundle install
       
       - name: 构建网站
-        run: jekyll build
+        run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
       

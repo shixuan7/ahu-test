@@ -10,6 +10,8 @@ title: 首页
 
 每周四上午8:30-11:30，地点：计算机科学与技术学院会议室
 
+> 🔔 新成员请查看[论文分享上传指南](/docs/upload-guide)了解如何上传你的分享
+
 <div class="meeting-rules" style="background: #F5F5F5; padding: 25px; border-radius: 10px; margin: 30px 0;">
   <h2 style="color: #1B5E20; border-bottom: 2px solid #81C784; padding-bottom: 10px; margin-bottom: 20px;">小组会制度：</h2>
   <ol>

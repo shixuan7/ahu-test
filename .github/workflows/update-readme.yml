@@ -9,6 +9,8 @@ on:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 关键配置
     steps:
       - name: 检出代码
         uses: actions/checkout@v3

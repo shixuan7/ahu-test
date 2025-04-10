@@ -8,6 +8,7 @@
 | :---: |:--------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------:|
 | 2025.03.26 | 张国豪 | [Low-Light Image Enhancement via New Intuitionistic Fuzzy Generator-Based Retinex Approach](https://shixuan7.github.io/ahu-test/papers/1-low-light-enhancement) (IEEE Access 2025) | [📄](https://ieeexplore.ieee.org/document/10902139) |
 | 2025.03.26 | 邹晋 | [JamMa: Ultra-lightweight Local Feature Matching with Joint Mamba](https://shixuan7.github.io/ahu-test/papers/2-jamma-feature-matching) (CVPR 2025) | [📄](https://arxiv.org/abs/2503.03437) |
+| 2025-04-59 | 潘煜君 | [Segment Any-Quality Images with Generative Latent Space Enhancement](https://shixuan7.github.io/ahu-test/papers/3) (CVPR  2025) | [📄](https://arxiv.org/abs/2503.12507) |
 
 
 ### 📋 分享规则

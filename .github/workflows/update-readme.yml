@@ -84,3 +84,5 @@ jobs:
           git add README.md
           git commit -m "自动更新论文列表 [skip ci]" || echo "没有变更需要提交"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

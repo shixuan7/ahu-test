@@ -10,38 +10,16 @@ title: 首页
 ## 🌟 2025年春季学期
 
 <div class="paper-list" id="paper-list">
+  {% for post in site.posts %}
   <div class="paper-item">
-    <a href="{{ site.url }}{{ site.baseurl }}/index.html?paper=1">
-      <h3>Low-Light Image Enhancement via New Intuitionistic Fuzzy Generator-Based Retinex Approach</h3>
-      <p>IEEE Access 2025</p>
-      <p>报告人：张国豪</p>
-      <p>日期：2025-03-26</p>
+    <a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.journal }}</p>
+      <p>报告人：{{ post.presenter }}</p>
+      <p>日期：{{ post.date | date: "%Y-%m-%d" }}</p>
     </a>
   </div>
-  <div class="paper-item">
-    <a href="https://arxiv.org/abs/2503.03437" target="_blank">
-      <h3>JamMa: Ultra-lightweight Local Feature Matching with Joint Mamba</h3>
-      <p>CVPR 2025</p>
-      <p>报告人：邹晋</p>
-      <p>日期：2025-03-26</p>
-    </a>
-  </div>
-  <div class="paper-item">
-    <a href="https://arxiv.org/abs/2412.08345" target="_blank">
-      <h3>ConDSeg: A General Medical Image Segmentation Framework via Contrast-Driven Feature Enhancement</h3>
-      <p>AAAI 2025</p>
-      <p>报告人：张旭阳</p>
-      <p>日期：2025-03-26</p>
-    </a>
-  </div>
-  <div class="paper-item">
-    <a href="https://arxiv.org/abs/2412.19111" target="_blank">
-      <h3>Spectral Enhancement and Pseudo-Anchor Guidance</h3>
-      <p>IEEE ICASSP 2025</p>
-      <p>报告人：吴世俊</p>
-      <p>日期：2025-04-10</p>
-    </a>
-  </div>
+  {% endfor %}
 </div>
 
 ## 📋 分享规则

@@ -6,26 +6,28 @@ theme: minima
 
 # Jekyll 配置
 markdown: kramdown
-permalink: pretty
+permalink: /:year/:month/:day/:title/
 exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
   - vendor
 
-# 集合设置
-collections:
-  papers:
-    output: true
-    permalink: /papers/:path/
+# 论文页面配置
+paginate: 10
+paginate_path: "/page:num/"
+
+# 自动生成摘要
+excerpt_separator: <!--more-->
 
 # Defaults
 defaults:
   - scope:
-      path: ""
-      type: "papers"
+      path: "_posts"
+      type: "posts"
     values:
       layout: "paper"
+      permalink: "/papers/:title/"
   - scope:
       path: ""
     values:

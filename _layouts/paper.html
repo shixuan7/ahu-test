@@ -1,6 +1,66 @@
 ---
 layout: default
 ---
+<style>
+  .paper-detail {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .paper-header {
+    background: linear-gradient(120deg, #E8F5E9, #F3E5F5);
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .paper-header h2 {
+    color: #2E7D32;
+    margin-bottom: 20px;
+    font-size: 2em;
+  }
+
+  .paper-metadata {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    color: #4A4A4A;
+  }
+
+  .paper-metadata p {
+    margin: 5px 0;
+    font-size: 1.1em;
+  }
+
+  .paper-metadata strong {
+    color: #1B5E20;
+  }
+
+  .paper-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+
+  .paper-content h2 {
+    color: #1B5E20;
+    border-bottom: 2px solid #81C784;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  .paper-content p {
+    color: #4A4A4A;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+</style>
+
 <div class="paper-detail">
   <div class="paper-header">
     <h2>{{ page.title }}</h2>
@@ -27,30 +87,31 @@ layout: default
       display: inline-flex;
       align-items: center;
       padding: 12px 24px;
-      background: linear-gradient(135deg, #4CAF50, #2E7D32);
-      color: white;
+      background: linear-gradient(120deg, #E8F5E9, #F3E5F5);
+      color: #2E7D32;
       text-decoration: none;
       border-radius: 25px;
       font-weight: 500;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .resources a:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
-      background: linear-gradient(135deg, #66BB6A, #388E3C);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(120deg, #F3E5F5, #E8F5E9);
     }
 
     .resources a:active {
       transform: translateY(0);
-      box-shadow: 0 2px 4px rgba(46, 125, 50, 0.2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .resources a:before {
       content: '→';
       margin-right: 8px;
       font-size: 1.2em;
+      color: #2E7D32;
     }
 
     .resources a[href="/"]::before {

@@ -7,7 +7,6 @@ on:
       - '_layouts/**'
       - '_config.yml'
       - 'assets/**'
-      - '*.html'
       - '*.md'
   workflow_dispatch:
 
@@ -21,7 +20,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  update-readme:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: 检出代码
@@ -34,62 +33,60 @@ jobs:
           bundler-cache: true
 
       - name: 安装依赖
-        run: |
-          gem install jekyll jekyll-feed jekyll-paginate
+        run: gem install jekyll jekyll-feed jekyll-paginate
 
       - name: 生成论文列表
         run: |
-          # 创建临时文件存储论文列表
-          echo "# 📚 小组内论文分享" > temp_readme.md
-          echo "" >> temp_readme.md
-          echo "在这里记录我们小组内的论文分享和讨论。每周更新。" >> temp_readme.md
-          echo "" >> temp_readme.md
-          echo "### 🌟 2025年春季学期" >> temp_readme.md
-          echo "" >> temp_readme.md
-          echo "| 日期 | 汇报人 | 论文 |" >> temp_readme.md
-          echo "| :---: |:---:|:---:|" >> temp_readme.md
+          cat > README.md << EOF
+          # 📚 小组内论文分享
+
+          在这里记录我们小组内的论文分享和讨论。每周更新。
+
+          ### 🌟 2025年春季学期
+
+          | 日期 | 汇报人 | 论文 |
+          | :---: |:---:|:---:|
+          EOF
           
           # 从_posts目录读取论文信息并添加到README
           for file in _posts/*.md; do
             if [ -f "$file" ]; then
-              date=$(grep -m 1 "date:" "$file" | sed 's/date: //' | tr -d '\r')
-              presenter=$(grep -m 1 "presenter:" "$file" | sed 's/presenter: //' | sed 's/"//g' | tr -d '\r')
-              title=$(grep -m 1 "title:" "$file" | sed 's/title: //' | sed 's/"//g' | tr -d '\r')
-              journal=$(grep -m 1 "journal:" "$file" | sed 's/journal: //' | sed 's/"//g' | tr -d '\r')
-              link=$(grep -m 1 "original_link:" "$file" | sed 's/original_link: //' | sed 's/"//g' | tr -d '\r')
-              
+              date=$(grep -m 1 "date:" "$file" | sed 's/date: //')
+              presenter=$(grep -m 1 "presenter:" "$file" | sed 's/presenter: //' | sed 's/"//g')
+              title=$(grep -m 1 "title:" "$file" | sed 's/title: //' | sed 's/"//g')
+              journal=$(grep -m 1 "journal:" "$file" | sed 's/journal: //' | sed 's/"//g')
+          
               # 获取文件名（不含路径和扩展名）
               filename=$(basename "$file" .md)
-              
+          
               # 构建GitHub Pages链接
               gh_pages_link="https://shixuan7.github.io/ahu-test/papers/${filename#*-*-*-}"
-              
+          
               # 格式化日期
               formatted_date=$(date -d "$date" +"%Y.%m.%d" 2>/dev/null || echo "$date")
-              
+          
               # 添加到README
-              echo "| $formatted_date | $presenter | [$title]($gh_pages_link) ($journal) |" >> temp_readme.md
+              echo "| $formatted_date | $presenter | [$title]($gh_pages_link) ($journal) |" >> README.md
             fi
           done
           
           # 添加分享规则
-          echo "" >> temp_readme.md
-          echo "" >> temp_readme.md
-          echo "### 📋 分享规则" >> temp_readme.md
-          echo "1. ⏰ 每周四上午8:00-11:00进行组会报告" >> temp_readme.md
-          echo "2. 📊 每人每次分享1篇论文，控制时间在20-30分钟" >> temp_readme.md
-          echo "3. 📝 分享内容包括但不限于：" >> temp_readme.md
-          echo "   - 🔍 论文的核心创新点" >> temp_readme.md
-          echo "   - 🛠️ 方法的技术细节" >> temp_readme.md
-          echo "   - 📈 实验结果分析" >> temp_readme.md
-          echo "   - 💡 个人见解与思考" >> temp_readme.md
-          echo "4. 🤝 鼓励积极讨论，提出问题和建议" >> temp_readme.md
-          echo "---" >> temp_readme.md
-          echo "" >> temp_readme.md
-          echo "> 💫 欢迎大家积极参与组会讨论！如有任何建议，请随时提出。" >> temp_readme.md
-          
-          # 替换README.md
-          mv temp_readme.md README.md
+          cat >> README.md << EOF
+
+
+          ### 📋 分享规则
+          1. ⏰ 每周四上午8:00-11:00进行组会报告
+          2. 📊 每人每次分享1篇论文，控制时间在20-30分钟
+          3. 📝 分享内容包括但不限于：
+             - 🔍 论文的核心创新点
+             - 🛠️ 方法的技术细节
+             - 📈 实验结果分析
+             - 💡 个人见解与思考
+          4. 🤝 鼓励积极讨论，提出问题和建议
+          ---
+
+          > 💫 欢迎大家积极参与组会讨论！如有任何建议，请随时提出。
+          EOF
 
       - name: 提交更新的README
         run: |
@@ -101,26 +98,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 设置 Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.0'
-
-      - name: 安装依赖
-        run: |
-          gem install jekyll jekyll-feed jekyll-paginate minima
-
       - name: 构建网站
         run: jekyll build
 
-      - name: 设置 Pages
-        uses: actions/configure-pages@v4
-
-      - name: 上传构建结果
+      - name: 部署到 GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: "_site/"
 
-      - name: 部署到 GitHub Pages
-        id: deployment
+      - name: 发布网站
         uses: actions/deploy-pages@v4

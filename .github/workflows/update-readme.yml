@@ -46,8 +46,8 @@ jobs:
           echo "" >> temp_readme.md
           echo "### 🌟 2025年春季学期" >> temp_readme.md
           echo "" >> temp_readme.md
-          echo "| 日期 | 汇报人 | 论文 | 原文链接 |" >> temp_readme.md
-          echo "| :---: |:--------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------:|" >> temp_readme.md
+          echo "| 日期 | 汇报人 | 论文 |" >> temp_readme.md
+          echo "| :---: |:---:|:---:|" >> temp_readme.md
           
           # 从_posts目录读取论文信息并添加到README
           for file in _posts/*.md; do
@@ -68,7 +68,7 @@ jobs:
               formatted_date=$(date -d "$date" +"%Y.%m.%d" 2>/dev/null || echo "$date")
               
               # 添加到README
-              echo "| $formatted_date | $presenter | [$title]($gh_pages_link) ($journal) | [📄]($link) |" >> temp_readme.md
+              echo "| $formatted_date | $presenter | [$title]($gh_pages_link) ($journal) |" >> temp_readme.md
             fi
           done
           
